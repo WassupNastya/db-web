@@ -39,8 +39,18 @@ app.get('/', (req, res) => res.send('hello world'))
 app.get('/candidates', (req, res) => main.getCandidates(req, res, db))
 app.get('/abstracts',(req,res) => main.getAbstracts(req,res,db))
 app.get('/offers',(req,res) => main.getOffers(req,res,db))
-app.get('/reviews',(req,res) => main.getReviews(req,res,db));
-app.get('/interviews',(req,res) => main.getInterviews(req,res,db));
+app.get('/reviews',(req,res) => main.getReviews(req,res,db))
+app.get('/interviews',(req,res) => main.getInterviews(req,res,db))
+
+app.get('/deleteAllCandidates',(req,res) => main.deleteAllCandidates(req,res,db))
+app.get('/deleteAllAbstracts',(req,res) => main.deleteAllAbstracts(req,res,db))
+app.get('/deleteAllOffers',(req,res) => main.deleteAllOffers(req,res,db))
+app.get('/deleteAllReviews',(req,res) => main.deleteAllReviews(req,res,db))
+app.get('/deleteAllInterviews',(req,res) => main.deleteAllInterviews(req,res,db))
+
+app.get('/deleteAll',(req,res) => main.deleteAll(req,res,db))
+
+app.post('/addReview',(req,res) => main.addReview(req,res,db));
 app.post('/crud', (req, res) => main.postTableData(req, res, db))
 app.put('/crud', (req, res) => main.putTableData(req, res, db))
 app.delete('/crud', (req, res) => main.deleteTableData(req, res, db))
