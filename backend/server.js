@@ -11,7 +11,7 @@ var db = require('knex')({
     host : '127.0.0.1',
     user : 'postgres',
     password : '12345',
-    database : 'testcreate'
+    database : 'db-lab'
   }
 });
 
@@ -50,10 +50,12 @@ app.get('/deleteAllInterviews',(req,res) => main.deleteAllInterviews(req,res,db)
 
 app.get('/deleteAll',(req,res) => main.deleteAll(req,res,db))
 
-app.post('/addReview',(req,res) => main.addReview(req,res,db));
+app.get('/addReview',(req,res) => main.addReview(req,res,db));
 app.post('/crud', (req, res) => main.postTableData(req, res, db))
 app.put('/crud', (req, res) => main.putTableData(req, res, db))
 app.delete('/crud', (req, res) => main.deleteTableData(req, res, db))
+
+app.get('/getCandidateBySurname', (req, res) => main.getCandidateBySurname({surname: 'Ivanov'}, res, db))
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`)
