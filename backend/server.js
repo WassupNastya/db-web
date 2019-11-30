@@ -11,9 +11,10 @@ var db = require('knex')({
     host : '127.0.0.1',
     user : 'postgres',
     password : '12345',
-    database : 'practice4'
+    database : 'testcreate'
   }
 });
+
 
 const main = require('./controller/main')
 
@@ -35,7 +36,11 @@ app.use(bodyParser.json())
 app.use(morgan('combined')) 
 
 app.get('/', (req, res) => res.send('hello world'))
-app.get('/crud', (req, res) => main.getTableData(req, res, db))
+app.get('/candidates', (req, res) => main.getCandidates(req, res, db))
+app.get('/abstracts',(req,res) => main.getAbstracts(req,res,db))
+app.get('/offers',(req,res) => main.getOffers(req,res,db))
+app.get('/reviews',(req,res) => main.getReviews(req,res,db));
+app.get('/interviews',(req,res) => main.getInterviews(req,res,db));
 app.post('/crud', (req, res) => main.postTableData(req, res, db))
 app.put('/crud', (req, res) => main.putTableData(req, res, db))
 app.delete('/crud', (req, res) => main.deleteTableData(req, res, db))

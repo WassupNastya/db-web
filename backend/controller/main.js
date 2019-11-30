@@ -1,15 +1,33 @@
-const getTableData = (req, res, db) => {
-    db.select('*').from('customers')
-      .then(items => {
-        if(items.length){
-          res.json(items)
-        } else {
-          res.json({dataExists: 'false'})
-        }
-      })
+  const getCandidates = (req, res, db) => {
+    db.raw('SELECT * FROM getCandidates()')
+    .then((items) => res.json(items.rows))
+    .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+
+    const getAbstracts = (req, res, db) => {
+      db.raw('SELECT * FROM getAbstracts()')
+      .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
-  }
+    }
   
+    const getOffers = (req, res, db) => {
+      db.raw('SELECT * FROM getOffers()')
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+
+    const getReviews = (req, res, db) => {
+      db.raw('SELECT * FROM getReviews()')
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+
+    const getInterviews = (req, res, db) => {
+      db.raw('SELECT * FROM getInterviews()')
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+
   const postTableData = (req, res, db) => {
     const { first, last, email, phone, location, hobby } = req.body
     const added = new Date()
@@ -41,7 +59,11 @@ const getTableData = (req, res, db) => {
   }
   
   module.exports = {
-    getTableData,
+    getCandidates,
+    getAbstracts,
+    getOffers,
+    getReviews,
+    getInterviews,
     postTableData,
     putTableData,
     deleteTableData

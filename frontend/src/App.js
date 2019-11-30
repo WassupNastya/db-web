@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 const getItems = () => {
-  fetch('http://localhost:3000/crud')
+  fetch('http://localhost:3000/offers')
     .then(response => response.json())
     .then(items => console.log(items))
     .catch(err => console.log(err))
