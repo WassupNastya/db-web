@@ -1,0 +1,33 @@
+.button-group {
+    margin-top: 6em;
+    margin-right: 3em;
+}
+
+.button-group > .add-button {
+    background-color: #4DB4C5;
+    color: white;
+    margin-right: 1em;
+    height: 2.5em;
+}
+.add-button > .icon-add {
+    margin-right: 0.5em;
+}
+
+.button-group > .search-button {
+    border-color: #C5CACE;
+    margin-right: 1em;
+    width: 2.5em;
+    height: 2.5em;
+}
+.search-button > .icon-search {
+    color:#C5CACE;
+}
+
+.button-group > .delete-button {
+    border-color: #C5CACE;
+    width: 2.5em;
+    height: 2.5em;
+}
+.delete-button > .icon-delete {
+    color:#C5CACE;
+}

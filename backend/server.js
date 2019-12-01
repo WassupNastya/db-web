@@ -61,7 +61,6 @@ app.get('/addOffer',(req,res) => main.addOffer({isProposed:'1',isAdopted:'0'},re
 app.get('/addReview',(req,res) => main.addReview({conductedBy:'Petrov',comments:'test'},res,db))
 app.get('/addInterview',(req,res) => main.addInterview({candidateId:7,reviewId:7,abstractId:7,offerId:7,date:'2019-10-02',place:'Moscow',dd:'Nick'},res,db))
 
-
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`)
 })

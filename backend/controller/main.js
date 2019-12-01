@@ -58,7 +58,7 @@
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const  deleteAll= (req, res, db) => {
+    const deleteAll= (req, res, db) => {
       db.raw('CALL  deleteAll()')
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
