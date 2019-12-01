@@ -67,6 +67,11 @@ app.get('/setOffer',(req,res) => main.setOffer({offerId:7,isProposed:'0',isAdopt
 app.get('/setReview',(req,res) => main.setReview({reviewId:7, conductedBy:'Ivanov',comments:'TEST'},res,db))
 app.get('/setInterview',(req,res) => main.setInterview({interviewId:17 ,candidateId:7,reviewId:7,abstractId:7,offerId:7,date:'2019-10-02',place:'Moscow',dd:'Nick'},res,db))
 
+app.get('/deleteCandidateById',(req,res) => main.deleteCandidateById({candidateId: 8},res,db))
+app.get('/deleteAbstractById',(req,res) => main.deleteAbstractById({abstractId:8},res,db))
+app.get('/deleteOfferById',(req,res) => main.deleteOfferById({offerId:6},res,db))
+app.get('/deleteReviewById',(req,res) => main.deleteReviewById({reviewId:8},res,db))
+app.get('/deleteInterviewById',(req,res) => main.deleteInterviewById({interviewId:25},res,db))
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`)
