@@ -1,9 +1,9 @@
-  const getCandidates = (req, res, db) => {
-    db.raw('SELECT * FROM getCandidates()')
-    .then((items) => res.json(items.rows))
-    .catch(err => res.status(400).json({dbError: 'db error'}))
+    const getCandidates = (req, res, db) => {
+      db.raw('SELECT * FROM getCandidates()')
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
     }
-
+    
     const getAbstracts = (req, res, db) => {
       db.raw('SELECT * FROM getAbstracts()')
       .then((items) => res.json(items.rows))
@@ -63,46 +63,37 @@
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
-
-
-    const addReview = (req, res, db) => {
-      let a="a";
-      db.raw(`call addReview(${a},${a})`)
-      .returning('*')
+   
+    const getCandidateBySurname = ({surname}, res, db) => { 
+      db.raw(`SELECT * FROM GetCandidateBySurname('${surname}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-  const postTableData = (req, res, db) => {
-    const { first, last, email, phone, location, hobby } = req.body
-    const added = new Date()
-    db('customers').insert({first, last, email, phone, location, hobby, added})
-      .returning('*')
-      .then(item => {
-        res.json(item)
-      })
+    const getAbstractByEnglish = ({english}, res, db) => { 
+      db.raw(`SELECT * FROM GetAbstractByEnglish('${english}')`)
+      .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
-  }
-  
-  const putTableData = (req, res, db) => {
-    const { id, first, last, email, phone, location, hobby } = req.body
-    db('customers').where({id}).update({first, last, email, phone, location, hobby})
-      .returning('*')
-      .then(item => {
-        res.json(item)
-      })
+    }
+
+    const getOfferByIsProposed = ({isProposed}, res, db) => { 
+      db.raw(`SELECT * FROM GetOfferByIsProposed('${isProposed}')`)
+      .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
-  }
-  
-  const deleteTableData = (req, res, db) => {
-    const { id } = req.body
-    db('customers').where({id}).del()
-      .then(() => {
-        res.json({delete: 'true'})
-      })
+    }
+
+    const getReviewByConductedBy = ({conductedBy}, res, db) => { 
+      db.raw(`SELECT * FROM GetReviewByConductedBy('${conductedBy}')`)
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))      
+    }
+
+    const getInterviewByPlace = ({place}, res, db) => { 
+      db.raw(`SELECT * FROM GetInterviewByPlace('${place}')`)
+      .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
-  }
-  
+    }
+
   module.exports = {
     getCandidates,
     getAbstracts,
@@ -115,8 +106,9 @@
     deleteAllReviews,
     deleteAllInterviews,
     deleteAll,
-    addReview ,
-    postTableData,
-    putTableData,
-    deleteTableData
+    getCandidateBySurname,
+    getAbstractByEnglish,
+    getOfferByIsProposed,
+    getReviewByConductedBy,
+    getInterviewByPlace
   }
