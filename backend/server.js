@@ -61,7 +61,7 @@ app.get('/addOffer',(req,res) => main.addOffer({isProposed:'1',isAdopted:'0'},re
 app.get('/addReview',(req,res) => main.addReview({conductedBy:'Petrov',comments:'test'},res,db))
 app.get('/addInterview',(req,res) => main.addInterview({candidateId:7,reviewId:7,abstractId:7,offerId:7,date:'2019-10-02',place:'Moscow',dd:'Nick'},res,db))
 
-app.get('/setCandidate',(req,res) => main.setCandidate({candidateId:9, surname:'Ivanov',name:'Ivan',patronymic:'Ivanovich',skill:'SQL',source:'HH',status:'in process',result:'bad'},res,db))
+app.get('/setCandidate',(req,res) => main.setCandidate({candidateId:9, surname:'Petrov',name:'Ivan',patronymic:'Ivanovich',skill:'SQL',source:'HH',status:'in process',result:'bad'},res,db))
 app.get('/setAbstract',(req,res) => main.setAbstract({abstractId:7,salary:1500,english:'Advance',hours:20},res,db))
 app.get('/setOffer',(req,res) => main.setOffer({offerId:7,isProposed:'0',isAdopted:'0'},res,db))
 app.get('/setReview',(req,res) => main.setReview({reviewId:7, conductedBy:'Ivanov',comments:'TEST'},res,db))
@@ -72,6 +72,12 @@ app.get('/deleteAbstractById',(req,res) => main.deleteAbstractById({abstractId:8
 app.get('/deleteOfferById',(req,res) => main.deleteOfferById({offerId:6},res,db))
 app.get('/deleteReviewById',(req,res) => main.deleteReviewById({reviewId:8},res,db))
 app.get('/deleteInterviewById',(req,res) => main.deleteInterviewById({interviewId:25},res,db))
+
+app.get('/deleteCandidateBySurname',(req,res) => main.deleteCandidateBySurname({surname:'Petrov'},res,db))
+app.get('/deleteAbstractByEnglish',(req,res) => main.deleteAbstractByEnglish({english:'Inter'},res,db))
+app.get('/deleteOfferByIsProposed',(req,res) => main.deleteOfferByIsProposed({isProposed:'0'},res,db))
+app.get('/deleteReviewByConductedBy',(req,res) => main.deleteReviewByConductedBy({conductedBy:'Petrov'},res,db))
+app.get('/deleteInterviewByPlace',(req,res) => main.deleteInterviewByPlace({place:'Moscow'},res,db))
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`)

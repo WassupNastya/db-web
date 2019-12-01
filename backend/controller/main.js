@@ -183,6 +183,36 @@
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     } 
+    
+    const deleteCandidateBySurname = ({surname}, res, db) => { 
+      db.raw(`CALL DeleteCandidateBySurname('${surname}')`)
+      .then((items) => res.json(items.rows))        
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+    
+    const deleteAbstractByEnglish = ({english}, res, db) => { 
+      db.raw(`CALL DeleteAbstractByEnglish('${english}')`)
+      .then((items) => res.json(items.rows))        
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+    
+    const deleteOfferByIsProposed = ({isProposed}, res, db) => { 
+      db.raw(`CALL DeleteOfferByIsProposed('${isProposed}')`)
+      .then((items) => res.json(items.rows))        
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+  
+    const deleteReviewByConductedBy = ({conductedBy}, res, db) => { 
+      db.raw(`CALL DeleteReviewByConsuctedBy('${conductedBy}')`)
+      .then((items) => res.json(items.rows))        
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+    
+    const deleteInterviewByPlace = ({place}, res, db) => { 
+      db.raw(`CALL DeleteInterviewByPlace('${place}')`)
+      .then((items) => res.json(items.rows))        
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
 
   module.exports = {
     getCandidates,
@@ -215,5 +245,10 @@
     deleteAbstractById,
     deleteOfferById,
     deleteReviewById,
-    deleteInterviewById
+    deleteInterviewById,
+    deleteCandidateBySurname,
+    deleteAbstractByEnglish,
+    deleteOfferByIsProposed,
+    deleteReviewByConductedBy,
+    deleteInterviewByPlace
   }
