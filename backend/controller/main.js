@@ -123,6 +123,36 @@
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
+  
+    const setCandidate = ({candidateId,surname, name, patronymic, skill, source, status, result}, res, db) => { 
+      db.raw(`CALL setCandidate(${candidateId},'${surname}','${name}','${patronymic}','${skill}','${source}','${status}','${result}')`)
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+
+    const setAbstract = ({abstractId,salary, english, hours}, res, db) => { 
+      db.raw(`CALL setAbstract(${abstractId},${salary},'${english}',${hours})`)
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+
+    const setOffer = ({offerId, isProposed, isAdopted}, res, db) => { 
+      db.raw(`CALL setOffer(${offerId},'${isProposed}','${isAdopted}')`)
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+
+    const setReview = ({reviewId,conductedBy, comments}, res, db) => { 
+      db.raw(`CALL setReview(${reviewId},'${conductedBy}','${comments}')`)
+      .then((items) => res.json(items.rows))
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    }
+    
+    const setInterview = ({interviewId, candidateId, reviewId, abstractId, offerId, date, place, dd}, res, db) => { 
+      db.raw(`CALL setInterview(${interviewId},${candidateId},${reviewId},${abstractId},${offerId},'${date}','${place}','${dd}')`)
+      .then((items) => res.json(items.rows))        
+      .catch(err => res.status(400).json({dbError: 'db error'}))
+    } 
 
   module.exports = {
     getCandidates,
@@ -145,5 +175,10 @@
     addAbstract,
     addOffer,
     addReview,
-    addInterview
+    addInterview,
+    setCandidate,
+    setAbstract,
+    setOffer,
+    setReview,
+    setInterview
   }
