@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Header.css";
 
 function Header({changeTitle, ...props}) {
-  const [model, setModel] = useState(0);
+  const [model, setModel] = useState(1);
 
   return (
     <div className="header">

@@ -3,5 +3,7 @@ body {
   font-family: 'Alata', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom, #4DB4C5 0 35%, #E6EAED 0 65%);
+  height: 100vh;
+  background: linear-gradient(to bottom, #4DB4C5 0 250px, #E6EAED 0 100%);
+  background-repeat: no-repeat;
 }
