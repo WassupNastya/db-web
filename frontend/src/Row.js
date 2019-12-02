@@ -3,7 +3,7 @@ import './Row.css';
 
 function Row({children, ...props}) {
   return (
-    <div className="row d-flex align-items-center table-row">
+    <div className="row d-flex align-items-center table-row" >
         {children}
     </div>
   );

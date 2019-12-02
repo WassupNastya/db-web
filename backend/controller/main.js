@@ -64,62 +64,62 @@
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
    
-    const getCandidateBySurname = ({surname}, res, db) => { 
-      db.raw(`SELECT * FROM GetCandidateBySurname('${surname}')`)
+    const getCandidateBySurname = (req, res, db) => { 
+      db.raw(`SELECT * FROM GetCandidateBySurname('${req.query.surname}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const getAbstractByEnglish = ({english}, res, db) => { 
-      db.raw(`SELECT * FROM GetAbstractByEnglish('${english}')`)
+    const getAbstractByEnglish = (req, res, db) => { 
+      db.raw(`SELECT * FROM GetAbstractByEnglish('${req.query.english}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const getOfferByIsProposed = ({isProposed}, res, db) => { 
-      db.raw(`SELECT * FROM GetOfferByIsProposed('${isProposed}')`)
+    const getOfferByIsProposed = (req, res, db) => { 
+      db.raw(`SELECT * FROM GetOfferByIsProposed('${req.query.isProposed}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const getReviewByConductedBy = ({conductedBy}, res, db) => { 
-      db.raw(`SELECT * FROM GetReviewByConductedBy('${conductedBy}')`)
+    const getReviewByConductedBy = (req, res, db) => { 
+      db.raw(`SELECT * FROM GetReviewByConductedBy('${req.query.conductedBy}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))      
     }
 
-    const getInterviewByPlace = ({place}, res, db) => { 
-      db.raw(`SELECT * FROM GetInterviewByPlace('${place}')`)
+    const getInterviewByPlace = (req, res, db) => { 
+      db.raw(`SELECT * FROM GetInterviewByPlace('${req.query.place}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const addCandidate = ({surname, name, patronymic, skill, source, status, result}, res, db) => { 
-      db.raw(`CALL AddCandidate('${surname}','${name}','${patronymic}','${skill}','${source}','${status}','${result}')`)
+    const addCandidate = (req, res, db) => { 
+      db.raw(`CALL AddCandidate('${req.query.surname}','${req.query.name}','${req.query.patronymic}','${req.query.skill}','${req.query.source}','${req.query.status}','${req.query.result}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
   
-    const addAbstract = ({salary, english, hours}, res, db) => { 
-      db.raw(`CALL AddAbstract(${salary},'${english}',${hours})`)
+    const addAbstract = (req, res, db) => { 
+      db.raw(`CALL AddAbstract(${req.query.salary},'${req.query.english}',${req.query.hours})`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
   
-    const addOffer = ({isProposed, isAdopted}, res, db) => { 
-      db.raw(`CALL AddOffer('${isProposed}','${isAdopted}')`)
+    const addOffer = (req, res, db) => { 
+      db.raw(`CALL AddOffer('${req.query.isProposed}','${req.query.isAdopted}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const addReview = ({conductedBy, comments}, res, db) => { 
-      db.raw(`CALL AddReview('${conductedBy}','${comments}')`)
+    const addReview = (req, res, db) => { 
+      db.raw(`CALL AddReview('${req.query.conductedBy}','${req.query.comments}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const addInterview = ({candidateId, reviewId, abstractId, offerId, date, place, dd}, res, db) => { 
-      db.raw(`CALL AddInterview(${candidateId},${reviewId},${abstractId},${offerId},'${date}','${place}','${dd}')`)
+    const addInterview = (req, res, db) => { 
+      db.raw(`CALL AddInterview(${req.query.candidateId},${req.query.reviewId},${req.query.abstractId},${req.query.offerId},'${req.query.date}','${req.query.place}','${req.query.dd}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }

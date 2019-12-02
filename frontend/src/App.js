@@ -9,6 +9,10 @@ function App() {
   const [title, setTitle] = useState("Abstracts");
   const [content, setContent] = useState([]);
 
+  function objectToQueryString(obj) {
+    return Object.keys(obj).map(key => key + '=' + obj[key]).join('&');
+  }
+
   async function getCandidates() {
     fetch("http://localhost:3000/candidates")
       .then(response => response.json())
@@ -44,6 +48,97 @@ function App() {
       .catch(err => console.log(err));
   }
 
+  
+async function getCandidateBySurname(data) {
+  let url ="http://localhost:3000/getCandidateBySurname";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function getAbstractByEnglish(data) {
+  let url ="http://localhost:3000/getAbstractByEnglish";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function getOfferByIsProposed(data) {
+  let url ="http://localhost:3000/getOfferByIsProposed";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function getReviewByConductedBy(data) {
+  let url ="http://localhost:3000/getReviewByConductedBy";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function getInterviewByPlace(data) {
+  let url ="http://localhost:3000/getInterviewByPlace";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function addCandidate(data) {
+  let url ="http://localhost:3000/addCandidate";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function addAbstract(data) {
+  let url ="http://localhost:3000/addAbstract";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function addOffer(data) {
+  let url ="http://localhost:3000/addOffer";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function addReview(data) {
+  let url ="http://localhost:3000/addReview";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
+async function addInterview(data) {
+  let url ="http://localhost:3000/addInterview";
+  url += '?' + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .then(data => updateTable(data))
+    .catch(err => console.log(err));
+}
+
   function updateTable(content) {
     setContent(content);
   }
@@ -52,18 +147,28 @@ function App() {
     switch (title) {
       case "Candidates":
         getCandidates();
+        //getCandidateBySurname({surname : "Ivanov"});
+        //addCandidate({surname:'Test',name:'Ivan',patronymic:'Ivanovich',skill:'C',source:'SP',status:'in process',result:'bad'});
         break;
       case "Abstracts":
         getAbstracts();
+        //getAbstractByEnglish({english : "Upper Intermediate"});
+        //addAbstract({salary:100000,english:'Begin',hours:40});
         break;
       case "Offers":
         getOffers();
+        //getOfferByIsProposed({isProposed: '0'});
+        //addOffer({isProposed:'0',isAdopted:'0'});
         break;
       case "Reviews":
         getReviews();
+        //getReviewByConductedBy({conductedBy:'Sidorov'});
+        //addReview({conductedBy:'QWERTY',comments:'YTREWQ'});
         break;
       case "Interviews":
         getInterviews();
+        //getInterviewByPlace({place:'NN'});
+        //addInterview({candidateId:12,reviewId:15,abstractId:11,offerId:10,date:'2019-02-02',place:'NN',dd:'Mark'});
         break;
     }
   }, [title]);
