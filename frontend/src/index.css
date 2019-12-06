@@ -3,7 +3,8 @@ body {
   font-family: 'Alata', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  min-height: 100vh;
+  background-attachment: fixed;
   background: linear-gradient(to bottom, #4DB4C5 0 250px, #E6EAED 0 100%);
   background-repeat: no-repeat;
 }
