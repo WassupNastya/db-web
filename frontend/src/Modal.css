@@ -2,3 +2,7 @@
   display: block;
   min-height: 10rem;
 }
+
+.modal-content {
+  width: 50em;
+}

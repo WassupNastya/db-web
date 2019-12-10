@@ -9,9 +9,10 @@ function App() {
   const [title, setTitle] = useState("Abstracts");
   const [content, setContent] = useState([]);
 
-
   function objectToQueryString(obj) {
-    return Object.keys(obj).map(key => key + '=' + obj[key]).join('&');
+    return Object.keys(obj)
+      .map(key => key + "=" + obj[key])
+      .join("&");
   }
 
   async function getCandidates() {
@@ -57,7 +58,6 @@ async function addCandidate(data) {
     .then(data => updateTable(data))
     .catch(err => console.log(err));
 }
-
 async function addAbstract(data) {
   let url ="http://localhost:3000/addAbstract";
   url += '?' + objectToQueryString(data);
@@ -93,7 +93,6 @@ async function addInterview(data) {
     .then(data => updateTable(data))
     .catch(err => console.log(err));
 }
-
 async function setCandidate(data) {
   let url ="http://localhost:3000/setCandidate";
   url += '?' + objectToQueryString(data);
@@ -138,7 +137,6 @@ async function setInterview(data) {
     .then(data => updateTable(data))
     .catch(err => console.log(err));
 }
-
 async function deleteCandidateById(data) {
   let url ="http://localhost:3000/deleteCandidateById";
   url += '?' + objectToQueryString(data);
@@ -244,7 +242,8 @@ async function deleteCandidateBySurname(data) {
         <Header changeTitle={title => setTitle(title)}></Header>
         <div className="d-flex justify-content-between">
           <h2 className="page-title">{title}</h2>
-          <ButtonGroup tableName={title} onChange={data=>updateTable(data)}></ButtonGroup>
+          <ButtonGroup page={title} updateTable={(data) => updateTable(data)}>
+            </ButtonGroup>        
         </div>
         <div className="table-background">
           <Table
