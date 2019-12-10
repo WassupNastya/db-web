@@ -50,146 +50,146 @@ function App() {
       .catch(err => console.log(err));
   }
 
-async function addCandidate(data) {
-  let url ="http://localhost:3000/addCandidate";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
-async function addAbstract(data) {
-  let url ="http://localhost:3000/addAbstract";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function addCandidate(data) {
+    let url = "http://localhost:3000/addCandidate";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
+  async function addAbstract(data) {
+    let url = "http://localhost:3000/addAbstract";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function addOffer(data) {
-  let url ="http://localhost:3000/addOffer";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function addOffer(data) {
+    let url = "http://localhost:3000/addOffer";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function addReview(data) {
-  let url ="http://localhost:3000/addReview";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function addReview(data) {
+    let url = "http://localhost:3000/addReview";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function addInterview(data) {
-  let url ="http://localhost:3000/addInterview";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
-async function setCandidate(data) {
-  let url ="http://localhost:3000/setCandidate";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function addInterview(data) {
+    let url = "http://localhost:3000/addInterview";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
+  async function setCandidate(data) {
+    let url = "http://localhost:3000/setCandidate";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function setAbstract(data) {
-  let url ="http://localhost:3000/setAbstract";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function setAbstract(data) {
+    let url = "http://localhost:3000/setAbstract";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function setOffer(data) {
-  let url ="http://localhost:3000/setOffer";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function setOffer(data) {
+    let url = "http://localhost:3000/setOffer";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function setReview(data) {
-  let url ="http://localhost:3000/setReview";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function setReview(data) {
+    let url = "http://localhost:3000/setReview";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function setInterview(data) {
-  let url ="http://localhost:3000/setInterview";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
-async function deleteCandidateById(data) {
-  let url ="http://localhost:3000/deleteCandidateById";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function setInterview(data) {
+    let url = "http://localhost:3000/setInterview";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
+  async function deleteCandidateById(data) {
+    let url = "http://localhost:3000/deleteCandidateById";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function deleteAbstractById(data) {
-  let url ="http://localhost:3000/deleteAbstractById";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function deleteAbstractById(data) {
+    let url = "http://localhost:3000/deleteAbstractById";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function deleteOfferById(data) {
-  let url ="http://localhost:3000/deleteOfferById";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function deleteOfferById(data) {
+    let url = "http://localhost:3000/deleteOfferById";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function deleteReviewById(data) {
-  let url ="http://localhost:3000/deleteReviewById";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function deleteReviewById(data) {
+    let url = "http://localhost:3000/deleteReviewById";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function deleteInterviewById(data) {
-  let url ="http://localhost:3000/deleteInterviewById";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function deleteInterviewById(data) {
+    let url = "http://localhost:3000/deleteInterviewById";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
-async function deleteCandidateBySurname(data) {
-  let url ="http://localhost:3000/deleteCandidateBySurname";
-  url += '?' + objectToQueryString(data);
-  fetch(url)
-    .then(response => response.json())
-    .then(data => updateTable(data))
-    .catch(err => console.log(err));
-}
+  async function deleteCandidateBySurname(data) {
+    let url = "http://localhost:3000/deleteCandidateBySurname";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .then(data => updateTable(data))
+      .catch(err => console.log(err));
+  }
 
   function updateTable(content) {
     setContent(content);
@@ -242,8 +242,11 @@ async function deleteCandidateBySurname(data) {
         <Header changeTitle={title => setTitle(title)}></Header>
         <div className="d-flex justify-content-between">
           <h2 className="page-title">{title}</h2>
-          <ButtonGroup page={title} updateTable={(data) => updateTable(data)}>
-            </ButtonGroup>        
+          <ButtonGroup
+            page={title}
+            updateTable={data => updateTable(data)}
+            tableName={title}
+          ></ButtonGroup>
         </div>
         <div className="table-background">
           <Table
@@ -268,26 +271,26 @@ const headers = {
     { id: 5, title: "Skill" },
     { id: 6, title: "Source" },
     { id: 7, title: "Status" },
-    { id: 8, title:"Action"}
+    { id: 8, title: "Action" }
   ],
   Abstracts: [
     { id: 1, title: "ID" },
     { id: 2, title: "Desired Salary" },
     { id: 3, title: "English Level" },
     { id: 4, title: "Hours Per Week" },
-    { id: 5, title:"Action"}
+    { id: 5, title: "Action" }
   ],
   Offers: [
     { id: 1, title: "ID" },
     { id: 2, title: "Is Proposed" },
     { id: 3, title: "Is Adopted" },
-    { id: 4, title:"Action"}
+    { id: 4, title: "Action" }
   ],
   Reviews: [
     { id: 1, title: "ID" },
     { id: 2, title: "Conducted By" },
     { id: 3, title: "Comments" },
-    { id: 4, title:"Action"}
+    { id: 4, title: "Action" }
   ],
   Interviews: [
     { id: 1, title: "ID" },
@@ -298,6 +301,6 @@ const headers = {
     { id: 6, title: "Date" },
     { id: 7, title: "Place" },
     { id: 8, title: "D. Director" },
-    { id: 9, title:"Action"}
+    { id: 9, title: "Action" }
   ]
 };

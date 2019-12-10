@@ -77,7 +77,7 @@ app.get('/deleteCandidateBySurname',(req,res) => main.deleteCandidateBySurname(r
 app.get('/deleteAbstractByEnglish',(req,res) => main.deleteAbstractByEnglish({english:'Inter'},res,db))
 app.get('/deleteOfferByIsProposed',(req,res) => main.deleteOfferByIsProposed({isProposed:'0'},res,db))
 app.get('/deleteReviewByConductedBy',(req,res) => main.deleteReviewByConductedBy({conductedBy:'Petrov'},res,db))
-app.get('/deleteReviewByConductedBy',(req,res) => main.deleteInterviewByPlace({place:'Moscow'},res,db))
+app.get('/deleteInterviewByPlace',(req,res) => main.deleteInterviewByPlace({place:'Moscow'},res,db))
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`)
