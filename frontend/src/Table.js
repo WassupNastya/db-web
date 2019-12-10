@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "./Row";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Table.css";
 
@@ -34,6 +34,9 @@ const rows = {
       <div className="col">{x.skill ? x.skill : ""}</div>
       <div className="col">{x.source ? x.source : ""}</div>
       <div className="col">{x.status ? x.status : ""}</div>
+      <button className="btn col">
+        <FontAwesomeIcon icon={faEdit} color='white' />
+      </button>
     </React.Fragment>
   ),
   Abstracts: x => (
@@ -42,6 +45,9 @@ const rows = {
       <div className="col">{x.salary ? x.salary : ""}</div>
       <div className="col">{x.english ? x.english : ""}</div>
       <div className="col">{x.hours ? x.hours : ""}</div>
+      <button className="btn col">
+        <FontAwesomeIcon icon={faEdit} color='white' />
+      </button>
     </React.Fragment>
   ),
   Offers: x => (
@@ -69,6 +75,9 @@ const rows = {
           ""
         )}
       </div>
+      <button className="btn col">
+        <FontAwesomeIcon icon={faEdit} color='white' />
+      </button>
     </React.Fragment>
   ),
   Reviews: x => (
@@ -76,6 +85,9 @@ const rows = {
       <div className="col">{x.reviewid}</div>
       <div className="col">{x.conductedby ? x.conductedby : ""}</div>
       <div className="col">{x.comments ? x.comments : ""}</div>
+      <button className="btn col">
+        <FontAwesomeIcon icon={faEdit} color='white' />
+      </button>
     </React.Fragment>
   ),
   Interviews: x => (
@@ -88,6 +100,9 @@ const rows = {
       <div className="col">{x.date ? x.date : ""}</div>
       <div className="col">{x.place ? x.place : ""}</div>
       <div className="col">{x.dd ? x.dd : ""}</div>
+      <button className="btn col">
+        <FontAwesomeIcon icon={faEdit} color='white' />
+      </button>
     </React.Fragment>
   )
 };

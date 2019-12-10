@@ -124,68 +124,68 @@
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
   
-    const setCandidate = ({candidateId,surname, name, patronymic, skill, source, status, result}, res, db) => { 
-      db.raw(`CALL setCandidate(${candidateId},'${surname}','${name}','${patronymic}','${skill}','${source}','${status}','${result}')`)
+    const setCandidate = (req, res, db) => { 
+      db.raw(`CALL setCandidate(${req.query.candidateId},'${req.query.surname}','${req.query.name}','${req.query.patronymic}','${req.query.skill}','${req.query.source}','${req.query.status}','${req.query.result}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const setAbstract = ({abstractId,salary, english, hours}, res, db) => { 
-      db.raw(`CALL setAbstract(${abstractId},${salary},'${english}',${hours})`)
+    const setAbstract = (req, res, db) => { 
+      db.raw(`CALL setAbstract(${req.query.abstractId},${req.query.salary},'${req.query.english}',${req.query.hours})`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const setOffer = ({offerId, isProposed, isAdopted}, res, db) => { 
-      db.raw(`CALL setOffer(${offerId},'${isProposed}','${isAdopted}')`)
+    const setOffer = (req, res, db) => { 
+      db.raw(`CALL setOffer(${req.query.offerId},'${req.query.isProposed}','${req.query.isAdopted}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
 
-    const setReview = ({reviewId,conductedBy, comments}, res, db) => { 
-      db.raw(`CALL setReview(${reviewId},'${conductedBy}','${comments}')`)
+    const setReview = (req, res, db) => { 
+      db.raw(`CALL setReview(${req.query.reviewId},'${req.query.conductedBy}','${req.query.comments}')`)
       .then((items) => res.json(items.rows))
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
     
-    const setInterview = ({interviewId, candidateId, reviewId, abstractId, offerId, date, place, dd}, res, db) => { 
-      db.raw(`CALL setInterview(${interviewId},${candidateId},${reviewId},${abstractId},${offerId},'${date}','${place}','${dd}')`)
+    const setInterview = (req, res, db) => { 
+      db.raw(`CALL setInterview(${req.query.interviewId},${req.query.candidateId},${req.query.reviewId},${req.query.abstractId},${req.query.offerId},'${req.query.date}','${req.query.place}','${req.query.dd}')`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     } 
 
-    const deleteCandidateById = ({candidateId}, res, db) => { 
-      db.raw(`CALL deleteCandidateById(${candidateId})`)
+    const deleteCandidateById = (req, res, db) => { 
+      db.raw(`CALL deleteCandidateById(${req.query.candidateId})`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     } 
   
-    const deleteAbstractById = ({abstractId}, res, db) => { 
-      db.raw(`CALL deleteAbstractById(${abstractId})`)
+    const deleteAbstractById = (req, res, db) => { 
+      db.raw(`CALL deleteAbstractById(${req.query.abstractId})`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     } 
    
-    const deleteOfferById = ({offerId}, res, db) => { 
-      db.raw(`CALL deleteOfferById(${offerId})`)
+    const deleteOfferById = (req, res, db) => { 
+      db.raw(`CALL deleteOfferById(${req.query.offerId})`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     } 
   
-    const deleteReviewById = ({reviewId}, res, db) => { 
-      db.raw(`CALL deleteReviewById(${reviewId})`)
+    const deleteReviewById = (req, res, db) => { 
+      db.raw(`CALL deleteReviewById(${req.query.reviewId})`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     } 
 
-    const deleteInterviewById = ({interviewId}, res, db) => { 
-      db.raw(`CALL deleteInterviewById(${interviewId})`)
+    const deleteInterviewById = (req, res, db) => { 
+      db.raw(`CALL deleteInterviewById(${req.query.interviewId})`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     } 
     
-    const deleteCandidateBySurname = ({surname}, res, db) => { 
-      db.raw(`CALL DeleteCandidateBySurname('${surname}')`)
+    const deleteCandidateBySurname = (req, res, db) => { 
+      db.raw(`CALL DeleteCandidateBySurname('${req.query.surname}')`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
