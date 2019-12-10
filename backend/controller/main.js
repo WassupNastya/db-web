@@ -190,26 +190,26 @@
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
     
-    const deleteAbstractByEnglish = ({english}, res, db) => { 
-      db.raw(`CALL DeleteAbstractByEnglish('${english}')`)
+    const deleteAbstractByEnglish = (req, res, db) => { 
+      db.raw(`CALL DeleteAbstractByEnglish('${req.query.english}')`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
     
-    const deleteOfferByIsProposed = ({isProposed}, res, db) => { 
-      db.raw(`CALL DeleteOfferByIsProposed('${isProposed}')`)
+    const deleteOfferByIsProposed = (req, res, db) => { 
+      db.raw(`CALL DeleteOfferByIsProposed('${req.query.isProposed}')`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
   
-    const deleteReviewByConductedBy = ({conductedBy}, res, db) => { 
-      db.raw(`CALL DeleteReviewByConsuctedBy('${conductedBy}')`)
+    const deleteReviewByConductedBy = (req, res, db) => { 
+      db.raw(`CALL DeleteReviewByConsuctedBy('${req.query.conductedBy}')`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }
     
-    const deleteInterviewByPlace = ({place}, res, db) => { 
-      db.raw(`CALL DeleteInterviewByPlace('${place}')`)
+    const deleteInterviewByPlace = (req, res, db) => { 
+      db.raw(`CALL DeleteInterviewByPlace('${req.query.place}')`)
       .then((items) => res.json(items.rows))        
       .catch(err => res.status(400).json({dbError: 'db error'}))
     }

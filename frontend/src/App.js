@@ -49,50 +49,7 @@ function App() {
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
-  async function addCandidate(data) {
-    let url = "http://localhost:3000/addCandidate";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => response.json())
-      .then(data => updateTable(data))
-      .catch(err => console.log(err));
-  }
-  async function addAbstract(data) {
-    let url = "http://localhost:3000/addAbstract";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => response.json())
-      .then(data => updateTable(data))
-      .catch(err => console.log(err));
-  }
-
-  async function addOffer(data) {
-    let url = "http://localhost:3000/addOffer";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => response.json())
-      .then(data => updateTable(data))
-      .catch(err => console.log(err));
-  }
-
-  async function addReview(data) {
-    let url = "http://localhost:3000/addReview";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => response.json())
-      .then(data => updateTable(data))
-      .catch(err => console.log(err));
-  }
-
-  async function addInterview(data) {
-    let url = "http://localhost:3000/addInterview";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => response.json())
-      .then(data => updateTable(data))
-      .catch(err => console.log(err));
-  }
+  
   async function setCandidate(data) {
     let url = "http://localhost:3000/setCandidate";
     url += "?" + objectToQueryString(data);
@@ -182,14 +139,7 @@ function App() {
       .catch(err => console.log(err));
   }
 
-  async function deleteCandidateBySurname(data) {
-    let url = "http://localhost:3000/deleteCandidateBySurname";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => response.json())
-      .then(data => updateTable(data))
-      .catch(err => console.log(err));
-  }
+
 
   function updateTable(content) {
     setContent(content);

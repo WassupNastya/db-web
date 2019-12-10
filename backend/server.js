@@ -74,10 +74,10 @@ app.get('/deleteReviewById',(req,res) => main.deleteReviewById(req,res,db))
 app.get('/deleteInterviewById',(req,res) => main.deleteInterviewById(req,res,db))
 
 app.get('/deleteCandidateBySurname',(req,res) => main.deleteCandidateBySurname(req,res,db))
-app.get('/deleteAbstractByEnglish',(req,res) => main.deleteAbstractByEnglish({english:'Inter'},res,db))
-app.get('/deleteOfferByIsProposed',(req,res) => main.deleteOfferByIsProposed({isProposed:'0'},res,db))
-app.get('/deleteReviewByConductedBy',(req,res) => main.deleteReviewByConductedBy({conductedBy:'Petrov'},res,db))
-app.get('/deleteInterviewByPlace',(req,res) => main.deleteInterviewByPlace({place:'Moscow'},res,db))
+app.get('/deleteAbstractByEnglish',(req,res) => main.deleteAbstractByEnglish(req,res,db))
+app.get('/deleteOfferByIsProposed',(req,res) => main.deleteOfferByIsProposed(req,res,db))
+app.get('/deleteReviewByConductedBy',(req,res) => main.deleteReviewByConductedBy(req,res,db))
+app.get('/deleteInterviewByPlace',(req,res) => main.deleteInterviewByPlace(req,res,db))
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT || 3000}`)
