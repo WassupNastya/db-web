@@ -1,0 +1,51 @@
+Все, что имеем
+
+1. Создание БД и всех таблиц
+2. Удаление БД
+
+3. AddCandidate(surname, name, patronymic, skill, source, status, result)
+4. AddAbstract(salary, english, hours)
+5. AddOffer(isProposed, isAdopted)
+6. AddReview(conductedBy, comments)
+7. AddInterview(candidateId, reviewId, abstractId, offerId, date, place, dd)
+
+8. getCandidates()
+9. getAbstracts()
+10. getOffers()
+11. getReviews()
+12. getInterviews()
+
+13. deleteAllCandidates()
+14. deleteAllAbstracts()
+15. deleteAllOffers()
+16. deleteAllReviews()
+17. deleteAllInterviews()
+18. deleteAll()
+
+19. setCandidate(surname, name, patronymic, skill, source, status, result)
+20. setAbstract(salary, english, hours)
+21. setOffer(isProposed, isAdopted)
+22. setReview(conductedBy, comments)
+23. setInterview(candidateId, reviewId, abstractId, offerId, date, place, dd)
+
+24. GetCandidateBySurname(surname)
+25. GetAbstractByEnglish(english)
+26. GetOfferByIsProposed(isProposed)
+27. GetReviewByConductedBy(conductedBy)
+28. GetInterviewByPlace(place)
+
+24. deleteCandidateById(id)
+25. deleteAbstractById(id)
+26. deleteOfferById(id)
+27. deleteReviewById(id)
+28. deleteInterviewById(id)
+
+24. DeleteCandidateBySurname(surname)
+25. DeleteAbstractByEnglish(english)
+26. DeleteOfferByIsProposed(isProposed)
+27. DeleteReviewByConductedBy(conductedBy)
+28. DeleteInterviewByPlace(place)
+
+
+
+
