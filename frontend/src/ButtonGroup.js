@@ -49,7 +49,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getCandidateBySurname(data) {
     let url = "http://localhost:3000/getCandidateBySurname";
     url += "?" + objectToQueryString(data);
@@ -58,7 +57,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getOfferByIsProposed(data) {
     let url = "http://localhost:3000/getOfferByIsProposed";
     url += "?" + objectToQueryString(data);
@@ -67,7 +65,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getReviewByConductedBy(data) {
     let url = "http://localhost:3000/getReviewByConductedBy";
     url += "?" + objectToQueryString(data);
@@ -76,7 +73,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getInterviewByPlace(data) {
     let url = "http://localhost:3000/getInterviewByPlace";
     url += "?" + objectToQueryString(data);
@@ -85,35 +81,30 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getCandidates() {
     fetch("http://localhost:3000/candidates")
       .then(response => response.json())
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getAbstracts() {
     fetch("http://localhost:3000/abstracts")
       .then(response => response.json())
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getOffers() {
     return fetch("http://localhost:3000/offers")
       .then(response => response.json())
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getReviews() {
     return fetch("http://localhost:3000/reviews")
       .then(response => response.json())
       .then(data => updateTable(data))
       .catch(err => console.log(err));
   }
-
   async function getInterviews() {
     return fetch("http://localhost:3000/interviews")
       .then(response => response.json())
@@ -150,6 +141,7 @@ function ButtonGroup({ tableName, updateTable }) {
         break;
     }
   }
+
   async function deleteCandidateBySurname(data) {
     let url = "http://localhost:3000/deleteCandidateBySurname";
     url += "?" + objectToQueryString(data);
@@ -157,7 +149,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(response => response.json())
       .catch(err => console.log(err));
   }
-
   async function deleteAbstractByEnglish(data) {
     let url = "http://localhost:3000/deleteAbstractByEnglish";
     url += "?" + objectToQueryString(data);
@@ -179,7 +170,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(response => response.json())
       .catch(err => console.log(err));
   }
-
   async function deleteInterviewByPlace(data) {
     let url = "http://localhost:3000/deleteInterviewByPlace";
     url += "?" + objectToQueryString(data);
@@ -213,6 +203,7 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(response => response.json())
       .catch(err => console.log(err));
   }
+
   function deleteBy() {
     switch (tableName) {
       case "Candidates":
@@ -272,7 +263,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(response => response.json())
       .catch(err => console.log(err));
   }
-
   async function addAbstract(data) {
     let url = "http://localhost:3000/addAbstract";
     url += "?" + objectToQueryString(data);
@@ -280,7 +270,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(response => response.json())
       .catch(err => console.log(err));
   }
-
   async function addOffer(data) {
     let url = "http://localhost:3000/addOffer";
     url += "?" + objectToQueryString(data);
@@ -288,7 +277,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(response => response.json())
       .catch(err => console.log(err));
   }
-
   async function addReview(data) {
     let url = "http://localhost:3000/addReview";
     url += "?" + objectToQueryString(data);
@@ -296,7 +284,6 @@ function ButtonGroup({ tableName, updateTable }) {
       .then(response => response.json())
       .catch(err => console.log(err));
   }
-
   async function addInterview(data) {
     let url = "http://localhost:3000/addInterview";
     url += "?" + objectToQueryString(data);
@@ -339,61 +326,91 @@ function ButtonGroup({ tableName, updateTable }) {
           </div>
         ));
       }
-      case "Abstracts": {
-        return abstractInputs.map(x => (
-          <div key={x.label} className="form-group">
-            <label>{x.label}</label>
-            <input
-              className="form-control"
-              onChange={e =>
-                setNewModel({ ...newModel, [x.field]: e.target.value })
-              }
-            ></input>
-          </div>
-        ));
-      }
-      case "Offers": {
-        return offerInputs.map(x => (
-          <div key={x.label} className="form-group">
-            <label>{x.label}</label>
-            <input
-              className="form-control"
-              onChange={e =>
-                setNewModel({ ...newModel, [x.field]: e.target.value })
-              }
-            ></input>
-          </div>
-        ));
-      }
-      case "Reviews": {
-        return reviewInputs.map(x => (
-          <div key={x.label} className="form-group">
-            <label>{x.label}</label>
-            <input
-              className="form-control"
-              onChange={e =>
-                setNewModel({ ...newModel, [x.field]: e.target.value })
-              }
-            ></input>
-          </div>
-        ));
-      }
-      case "Interviews": {
-        return interviewInputs.map(x => (
-          <div key={x.label} className="form-group">
-            <label>{x.label}</label>
-            <input
-              className="form-control"
-              onChange={e =>
-                setNewModel({ ...newModel, [x.field]: e.target.value })
-              }
-            ></input>
-          </div>
-        ));
+		case "Abstracts": {
+		        return abstractInputs.map(x => (
+		          <div key={x.label} className="form-group">
+		            <label>{x.label}</label>
+		            <input
+		              className="form-control"
+		              onChange={e =>
+		                setNewModel({ ...newModel, [x.field]: e.target.value })
+		              }
+		            ></input>
+		          </div>
+		        ));
+			skip();
+    		}; const getInputs = tableName => {
+      switch (tableName) {
+        case "Candidates": {
+          return candidateInputs.map(x => (
+            <div key={x.label} className="form-group">
+              <label>{x.label}</label>
+              <input
+                className="form-control"
+                onChange={e =>
+                  setNewModel({ ...newModel, [x.field]: e.target.value })
+                }
+              ></input>
+            </div>
+          ));
+        }
+        case "Abstracts": {
+          return abstractInputs.map(x => (
+            <div key={x.label} className="form-group">
+              <label>{x.label}</label>
+              <input
+                className="form-control"
+                onChange={e =>
+                  setNewModel({ ...newModel, [x.field]: e.target.value })
+                }
+              ></input>
+            </div>
+          ));
+        }
+        case "Offers": {
+          return offerInputs.map(x => (
+            <div key={x.label} className="form-group">
+              <label>{x.label}</label>
+              <input
+                className="form-control"
+                onChange={e =>
+                  setNewModel({ ...newModel, [x.field]: e.target.value })
+                }
+              ></input>
+            </div>
+          ));
+        }
+        case "Reviews": {
+          return reviewInputs.map(x => (
+            <div key={x.label} className="form-group">
+              <label>{x.label}</label>
+              <input
+                className="form-control"
+                onChange={e =>
+                  setNewModel({ ...newModel, [x.field]: e.target.value })
+                }
+              ></input>
+            </div>
+          ));
+        }
+        case "Interviews": {
+          return interviewInputs.map(x => (
+            <div key={x.label} className="form-group">
+              <label>{x.label}</label>
+              <input
+                className="form-control"
+                onChange={e =>
+                  setNewModel({ ...newModel, [x.field]: e.target.value })
+                }
+              ></input>
+            </div>
+          ));
+        }      
       }
     }
-  };
-
+  }
+}
+     
   const footerAddModal = (
     <div>
       <button
@@ -417,7 +434,6 @@ function ButtonGroup({ tableName, updateTable }) {
       </button>
     </div>
   );
-
   const footerSearchModal = (
     <div>
       <button className="btn btn-primary mr-4" onClick={() => getBy()}>
@@ -431,7 +447,6 @@ function ButtonGroup({ tableName, updateTable }) {
       </button>
     </div>
   );
-
   const footerDeleteModal = (
     <div>
       <button className="btn btn-danger mr-4" onClick={()=>deleteBy()}>Delete</button>
