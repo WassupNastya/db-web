@@ -10,4 +10,12 @@
 - **Backend:** Node.js, knex
 - **Frontend:** JS, React
 
-> API можно посмотреть в файле likeSwaggerButCooler.txt
+> API можно посмотреть в файле LikeSwaggerButCooler.txt
+
+![Candidates](https://github.com/WassupNastya/db-web/blob/master/screens/Candidates.png)
+
+![Add](https://github.com/WassupNastya/db-web/blob/master/screens/Add.png)
+
+![Delete](https://github.com/WassupNastya/db-web/blob/master/screens/Delete.png)
+
+![Search](https://github.com/WassupNastya/db-web/blob/master/screens/Search.png)
