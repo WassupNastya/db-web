@@ -3,10 +3,10 @@ import Row from "./Row";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { EditModal } from "./EditModal";
+import { EditModal } from "../modals/EditModal";
 import "./Table.css";
 
-function Table({ tableName, headers, content, ...props }) {
+function Table({ tableName, headers, content, updateTable, update, ...props }) {
   const [editModal, setEditModal] = useState({ show: false, id: 0 });
 
   const rows = {
@@ -95,7 +95,9 @@ function Table({ tableName, headers, content, ...props }) {
         <div className="col">{x.abstractid}</div>
         <div className="col">{x.reviewid}</div>
         <div className="col">{x.offerid}</div>
-        <div className="col">{x.date ? x.date : ""}</div>
+        <div className="col">
+          {x.date ? new Date(Date.parse(x.date)).toDateString() : ""}
+        </div>
         <div className="col">{x.place ? x.place : ""}</div>
         <div className="col">{x.dd ? x.dd : ""}</div>
         <button
@@ -121,7 +123,13 @@ function Table({ tableName, headers, content, ...props }) {
         <Row key={i} children={rows[tableName](x)}></Row>
       ))}
       {editModal.show && (
-        <EditModal setModal={setEditModal} tableName={tableName} id={editModal.id} />
+        <EditModal
+          setModal={setEditModal}
+          tableName={tableName}
+          id={editModal.id}
+          updateTable={updateTable}
+          update={update}
+        />
       )}
     </div>
   );
