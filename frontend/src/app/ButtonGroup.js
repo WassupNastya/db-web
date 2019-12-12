@@ -27,7 +27,7 @@ import {
 
 import "./ButtonGroup.css";
 
-function ButtonGroup({ tableName, updateTable, update }) {
+function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -207,6 +207,12 @@ function ButtonGroup({ tableName, updateTable, update }) {
         onClick={() => setShowDeleteModal(true)}
       >
         <FontAwesomeIcon icon={faTrashAlt} className="icon-delete" />
+      </button>
+      <button
+        className="btn delete-db"
+        onClick={() => setGoNext(false)}
+      >
+       Delete database
       </button>
       {showAddModal && (
         <Modal

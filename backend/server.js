@@ -11,7 +11,7 @@ var db = require("knex")({
     host: "127.0.0.1",
     user: "postgres",
     password: "12345",
-    database: "testcreate"
+    database: "db-lab"
   }
 });
 
@@ -19,7 +19,7 @@ var dbTest = require("knex")({
   client: "pg",
   connection: {
     host: "127.0.0.1",
-    user: "postgres",
+    user: "db-lab",
     password: "12345"
   }
 });

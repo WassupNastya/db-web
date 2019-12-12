@@ -28,6 +28,7 @@
     width: 2.5em;
     height: 2.5em;
 }
+
 .delete-button > .icon-delete {
     color:#C5CACE;
 }
@@ -43,4 +44,11 @@
 .message-for-delete{
     margin-right: 6rem;
     color: darkred;
+}
+
+.button-group > .delete-db {
+    background-color: #4DB4C5;
+    color: white;
+    margin-left: 1em;
+    height: 2.5em;
 }

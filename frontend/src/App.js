@@ -13,7 +13,7 @@ import {
   getInterviews
 } from "./actions/get";
 
-function App() {
+function App({ setGoNext }) {
   const [title, setTitle] = useState("Abstracts");
   const [content, setContent] = useState([]);
 
@@ -86,6 +86,7 @@ function App() {
             updateTable={data => updateTable(data)}
             tableName={title}
             update={update}
+            setGoNext={setGoNext}
           ></ButtonGroup>
         </div>
         <div className="table-background">
