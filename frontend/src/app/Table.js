@@ -157,12 +157,11 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
   return (
     <div className="table">
       <div className="row d-flex align-items-center header-row">
-        {headers != undefined &&
-          headers.map(x => (
-            <div className="col" key={x.id}>
-              {x.title}
-            </div>
-          ))}
+        {headers.map(x => (
+          <div className="col" key={x.id}>
+            {x.title}
+          </div>
+        ))}
       </div>
       {content.map((x, i) => (
         <Row key={i} children={rows[tableName](x)}></Row>

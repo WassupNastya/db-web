@@ -34,6 +34,15 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(morgan("combined"));
 app.get("/createDB", (req, res) => {
+  db = require("knex")({
+    client: "pg",
+    connection: {
+      host: "127.0.0.1",
+      user: "postgres",
+      password: "12345",
+      database: "testcreate"
+    }
+  });
   main.createDB(req, res, db);
 });
 app.get("/createSchema", (req, res) => {
