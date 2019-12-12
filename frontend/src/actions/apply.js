@@ -14,6 +14,11 @@ import {
   addInterview
 } from "./add";
 
+import {
+  deleteReviewById, deleteAbstractById,
+  deleteCandidateById,deleteOfferById,deleteInterviewById
+} from './delete';
+
 export const edit = ({ id, newModel, tableName }) => {
   switch (tableName) {
     case "Candidates":
@@ -50,6 +55,26 @@ export const add = ({ tableName, newModel }) => {
       break;
     case "Interviews":
       addInterview(newModel);
+      break;
+  }
+};
+
+export const deleteById = ({ id, tableName }) => {
+  switch (tableName) {
+    case "Candidates":
+      deleteCandidateById({ candidateId: id});
+      break;
+    case "Abstracts":
+      deleteAbstractById({ abstractId: id});
+      break;
+    case "Offers":
+      deleteOfferById({ offerId: id });
+      break;
+    case "Reviews":
+      deleteReviewById({ reviewId: id });
+      break;
+    case "Interviews":
+      deleteInterviewById({ interviewId: id });
       break;
   }
 };

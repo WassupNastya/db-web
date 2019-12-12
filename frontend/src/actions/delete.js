@@ -69,3 +69,43 @@ export async function deleteAllInterviews() {
     .then(response => response.json())
     .catch(err => console.log(err));
 }
+
+export async function deleteCandidateById(data) {
+  let url = "http://localhost:3000/deleteCandidateById";
+  url += "?" + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+
+export async function deleteAbstractById(data) {
+  let url = "http://localhost:3000/deleteAbstractById";
+  url += "?" + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+
+export async function deleteOfferById(data) {
+  let url = "http://localhost:3000/deleteOfferById";
+  url += "?" + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+
+export async function deleteReviewById(data) {
+  let url = "http://localhost:3000/deleteReviewById";
+  url += "?" + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}
+
+export async function deleteInterviewById(data) {
+  let url = "http://localhost:3000/deleteInterviewById";
+  url += "?" + objectToQueryString(data);
+  fetch(url)
+    .then(response => response.json())
+    .catch(err => console.log(err));
+}

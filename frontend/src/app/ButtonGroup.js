@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faPlus, faReply } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faPlus, faReply, faReplyAll, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { Modal } from "../shared/Modal";
 import { getInputs } from "../heplers";
@@ -10,12 +10,7 @@ import {
   getCandidateBySurname,
   getOfferByIsProposed,
   getReviewByConductedBy,
-  getInterviewByPlace,
-  getCandidates,
-  getAbstracts,
-  getOffers,
-  getReviews,
-  getInterviews
+  getInterviewByPlace
 } from "../actions/get";
 import {
   deleteCandidateBySurname,
@@ -74,12 +69,12 @@ function ButtonGroup({ tableName, updateTable, update }) {
         setShowSearchModal(false);
         break;
       case "Offers":
-        getOfferByIsProposed({ data: { isproposed: value }, updateTable });
+        getOfferByIsProposed({ data: { isProposed: value }, updateTable });
         setValue("");
         setShowSearchModal(false);
         break;
       case "Reviews":
-        getReviewByConductedBy({ data: { conductedby: value }, updateTable });
+        getReviewByConductedBy({ data: { conductedBy: value }, updateTable });
         setValue("");
         setShowSearchModal(false);
         break;
@@ -108,21 +103,21 @@ function ButtonGroup({ tableName, updateTable, update }) {
         setShowDeleteModal(false);
         break;
       case "Offers":
-        typeDelete == 1
+        typeDelete === 1
           ? deleteAllOffers()
           : deleteOfferByIsProposed({ isProposed: value });
         setValue("");
         setShowDeleteModal(false);
         break;
       case "Reviews":
-        typeDelete == 1
+        typeDelete === 1
           ? deleteAllReviews()
           : deleteReviewByConductedBy({ conductedBy: value });
         setValue("");
         setShowDeleteModal(false);
         break;
       case "Interviews":
-        typeDelete == 1
+        typeDelete === 1
           ? deleteAllInterviews()
           : deleteInterviewByPlace({ place: value });
         setValue("");
@@ -139,7 +134,7 @@ function ButtonGroup({ tableName, updateTable, update }) {
           add({ tableName, newModel });
           setShowAddModal(false);
           setNewModel({});
-          update(tableName)
+          update(tableName);
         }}
       >
         Add
@@ -169,8 +164,17 @@ function ButtonGroup({ tableName, updateTable, update }) {
     </div>
   );
   const footerDeleteModal = (
-    <div>
-      <button className="btn btn-danger mr-4" onClick={() => {deleteBy(); update(tableName)}}>
+    <div className="d-flex">
+      <div className="message-for-delete">
+        By deleting this data, you can also delete the data associated with it.
+      </div>
+      <button
+        className="btn btn-danger mr-4"
+        onClick={() => {
+          deleteBy();
+          update(tableName);
+        }}
+      >
         Delete
       </button>
       <button
@@ -185,8 +189,8 @@ function ButtonGroup({ tableName, updateTable, update }) {
   return (
     <div className="button-group">
       <button className="btn add-button" onClick={() => update(tableName)}>
-        <FontAwesomeIcon icon={faReply} className="icon-add" />
-        Skip
+        <FontAwesomeIcon icon={faSyncAlt} className="icon-add" />
+        Refresh
       </button>
       <button className="btn add-button" onClick={() => setShowAddModal(true)}>
         <FontAwesomeIcon icon={faPlus} className="icon-add" />
@@ -264,7 +268,7 @@ function ButtonGroup({ tableName, updateTable, update }) {
                 name="delete"
                 value="option2"
                 className="form-check-input"
-                checked={typeDelete == 2}
+                checked={typeDelete === 2}
                 type="radio"
                 id="delete2"
                 onChange={e =>
@@ -275,7 +279,7 @@ function ButtonGroup({ tableName, updateTable, update }) {
                 className="form-check-label"
                 htmlFor="delete2"
               >{`Delete by field "${label}"`}</label>
-              {typeDelete == 2 && (
+              {typeDelete === 2 && (
                 <input
                   style={{ width: "15rem", marginLeft: "2rem" }}
                   value={value}

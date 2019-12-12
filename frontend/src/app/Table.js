@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import Row from "./Row";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { EditModal } from "../modals/EditModal";
 import "./Table.css";
+import { DeleteModal } from "../modals/DeleteModal";
 
 function Table({ tableName, headers, content, updateTable, update, ...props }) {
   const [editModal, setEditModal] = useState({ show: false, id: 0 });
-
+  const [deleteByIdModal, setDeleteByIdModal] = useState({
+    show: false,
+    id: 0
+  });
   const rows = {
     Candidates: x => (
       <React.Fragment>
@@ -25,6 +29,14 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         >
           <FontAwesomeIcon icon={faEdit} color="white" />
         </button>
+        <button
+          onClick={() => {
+            setDeleteByIdModal({ show: true, id: x.candidateid });
+          }}
+          className="btn col"
+        >
+          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+        </button>
       </React.Fragment>
     ),
     Abstracts: x => (
@@ -40,6 +52,14 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
             onClick={() => setEditModal({ show: true, id: x.abstractid })}
           />
         </button>
+        <button
+          onClick={() => {
+            setDeleteByIdModal({ show: true, id: x.abstractid });
+          }}
+          className="btn col"
+        >
+          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+        </button>
       </React.Fragment>
     ),
     Offers: x => (
@@ -47,7 +67,7 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         <div className="col">{x.offerid}</div>
         <div className="col">
           {x.isproposed ? (
-            x.isproposed == 1 ? (
+            x.isproposed === 1 ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
               <FontAwesomeIcon icon={faTimes} />
@@ -58,7 +78,7 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         </div>
         <div className="col">
           {x.isadopted ? (
-            x.isadopted == 1 ? (
+            x.isadopted === 1 ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
               <FontAwesomeIcon icon={faTimes} />
@@ -73,6 +93,14 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         >
           <FontAwesomeIcon icon={faEdit} color="white" />
         </button>
+        <button
+          onClick={() => {
+            setDeleteByIdModal({ show: true, id: x.offerid });
+          }}
+          className="btn col"
+        >
+          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+        </button>
       </React.Fragment>
     ),
     Reviews: x => (
@@ -85,6 +113,14 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
           onClick={() => setEditModal({ show: true, id: x.reviewid })}
         >
           <FontAwesomeIcon icon={faEdit} color="white" />
+        </button>
+        <button
+          onClick={() => {
+            setDeleteByIdModal({ show: true, id: x.reviewid });
+          }}
+          className="btn col"
+        >
+          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
         </button>
       </React.Fragment>
     ),
@@ -105,6 +141,14 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
           onClick={() => setEditModal({ show: true, id: x.interviewid })}
         >
           <FontAwesomeIcon icon={faEdit} color="white" />
+        </button>
+        <button
+          onClick={() => {
+            setDeleteByIdModal({ show: true, id: x.interviewid });
+          }}
+          className="btn col"
+        >
+          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
         </button>
       </React.Fragment>
     )
@@ -130,6 +174,15 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
           updateTable={updateTable}
           update={update}
         />
+      )}
+      {deleteByIdModal.show && (
+        <DeleteModal
+          setModal={setDeleteByIdModal}
+          tableName={tableName}
+          id={deleteByIdModal.id}
+          updateTable={updateTable}
+          update={update}
+        ></DeleteModal>
       )}
     </div>
   );

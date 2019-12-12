@@ -39,3 +39,8 @@
 .content-modal-delete >.input-field{
     width: 15rem;
 }
+
+.message-for-delete{
+    margin-right: 6rem;
+    color: darkred;
+}

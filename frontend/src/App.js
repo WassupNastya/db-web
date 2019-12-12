@@ -17,6 +17,20 @@ function App() {
   const [title, setTitle] = useState("Abstracts");
   const [content, setContent] = useState([]);
 
+  function objectToQueryString(obj) {
+    return Object.keys(obj)
+      .map(key => key + "=" + obj[key])
+      .join("&");
+  }
+
+  async function createDB(data) {
+    let url = "http://localhost:3000/createDB";
+    url += "?" + objectToQueryString(data);
+    fetch(url)
+      .then(response => response.json())
+      .catch(err => console.log(err));
+  }
+
   function updateTable(content) {
     setContent(content);
   }
@@ -69,7 +83,7 @@ function App() {
           <h2 className="page-title">{title}</h2>
           <ButtonGroup
             page={title}
-            updateTable={(data) => updateTable(data)}
+            updateTable={data => updateTable(data)}
             tableName={title}
             update={update}
           ></ButtonGroup>
@@ -79,7 +93,7 @@ function App() {
             tableName={title}
             headers={headers[title]}
             content={content}
-            updateTable={(data) => updateTable(data)}
+            updateTable={data => updateTable(data)}
             update={update}
           ></Table>
         </div>
