@@ -7,6 +7,12 @@ const createDB = (req, res, db) => {
     .catch(err => res.status(400).json({ dbError: "db error" }));
 };
 
+const dropDB = (req, res, db) => {
+  db.raw(`SELECT * FROM DROP('${req.query.name}')`)
+    .then(items => res.json(items.rows))
+    .catch(err => res.status(400).json({ dbError: "db error" }));
+};
+
 const createSchema = (req, res, db) => {
   db.raw(dbWorld)
     .then(items => res.json(items.rows))
@@ -246,6 +252,7 @@ const deleteInterviewByPlace = (req, res, db) => {
 };
 
 module.exports = {
+  dropDB,
   createSchema,
   createDB,
   getCandidates,

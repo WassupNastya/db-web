@@ -13,7 +13,7 @@ import {
   getInterviews
 } from "./actions/get";
 
-function App({ setGoNext }) {
+function App({ setGoNext,nameDB }) {
   const [title, setTitle] = useState("Abstracts");
   const [content, setContent] = useState([]);
 
@@ -92,6 +92,7 @@ function App({ setGoNext }) {
         <div className="d-flex justify-content-between">
           <h2 className="page-title">{title}</h2>
           <ButtonGroup
+          nameDB={nameDB}
             page={title}
             updateTable={data => updateTable(data)}
             tableName={title}

@@ -24,11 +24,12 @@ function Login() {
     let url = "http://localhost:3000/createSchema";
     url += "?" + objectToQueryString({ name: model });
     fetch(url)
-      .then(response => {})
-      .catch(err => console.log(err));
-    setTimeout(() => {
-      setGoNext(true);
-    }, 3000);
+      .then(response => {  })
+      .catch(err =>{ setGoNext(false);setLoading(false)});
+      setTimeout(() => {
+        setGoNext(true);
+        setLoading(false);
+      }, 3000)
   }
   return (
     <div>
@@ -67,7 +68,7 @@ function Login() {
           </div>
         </div>
       )}
-      {goNext && <App setGoNext={setGoNext} />}
+      {goNext && <App setGoNext={setGoNext} nameDB={model} />}
     </div>
   );
 }

@@ -33,7 +33,7 @@ import {
 
 import "./ButtonGroup.css";
 
-function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
+function ButtonGroup({ tableName, updateTable, update, setGoNext ,nameDB}) {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -42,6 +42,20 @@ function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
   const [label, setLabel] = useState("");
   const [newModel, setNewModel] = useState({});
   const [value, setValue] = useState("");
+
+  function objectToQueryString(obj) {
+    return Object.keys(obj)
+      .map(key => key + "=" + obj[key])
+      .join("&");
+  }
+
+  function drop() {
+    let url = "http://localhost:3000/dropDB";
+    url += "?" + objectToQueryString({ name: nameDB });
+    fetch(url)
+      .then(response => setGoNext(false))
+      .catch(err => console.log(err));
+  }
 
   useEffect(() => {
     switch (tableName) {
@@ -197,7 +211,7 @@ function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
       <button
         className="btn btn-danger mr-4"
         onClick={() => {
-          setGoNext(false);
+          drop();
         }}
       >
         Delete

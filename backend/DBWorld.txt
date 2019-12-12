@@ -1,9 +1,21 @@
+CREATE OR REPLACE FUNCTION DROP(NAME TEXT)
+RETURNS INTEGER
+AS $$
+BEGIN 
+perform pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = NAME AND pid <> pg_backend_pid();
+PERFORM DBLINK_EXEC('host=localhost user=postgres password=12345', 'DROP DATABASE ' || NAME); 
+RETURN 1; END; $$ LANGUAGE PLPGSQL;
+
+
 CREATE OR REPLACE FUNCTION CREATE_DB(NAME TEXT)
 RETURNS INTEGER
 AS $$
 BEGIN 
 PERFORM DBLINK_EXEC('host=localhost user=postgres password=12345', 'CREATE DATABASE ' || NAME); 
 RETURN 1; END; $$ LANGUAGE PLPGSQL;
+
 -- создание таблиц
 CREATE TABLE Candidate (
 	CandidateId SERIAL PRIMARY KEY,
