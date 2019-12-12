@@ -1,9 +1,16 @@
+const fs = require("fs");
+let dbWorld = fs.readFileSync("DBWorld.txt", "utf8");
+
 const createDB = (req, res, db) => {
-    setTimeout(()=>{
-      db.raw(`SELECT * FROM CREATE_DB('${req.query.name}')`)
-      .then(items => res.json(items.rows))
-      .catch(err => res.status(400).json({ dbError: "db error" }));
-    },30000)
+  db.raw(`SELECT * FROM CREATE_DB('${req.query.name}')`)
+    .then(items => res.json(items.rows))
+    .catch(err => res.status(400).json({ dbError: "db error" }));
+};
+
+const createSchema = (req, res, db) => {
+  db.raw(dbWorld)
+    .then(items => res.json(items.rows))
+    .catch(err => res.status(400).json({ dbError: "db error" }));
 };
 
 const getCandidates = (req, res, db) => {
@@ -239,6 +246,7 @@ const deleteInterviewByPlace = (req, res, db) => {
 };
 
 module.exports = {
+  createSchema,
   createDB,
   getCandidates,
   getAbstracts,

@@ -1,22 +1,21 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 50%;
-    margin-left: 3em;
-    margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 50%;
+  margin-left: 3em;
+  margin-top: 2em;
 }
 
 .header > .link {
-    text-decoration: none;
-    color: #C5CACE;
+  text-decoration: none;
+  color: #c5cace;
 }
 .header > .active-link {
-    text-decoration: none;
-    color: #1B1B1B;
+  text-decoration: none;
+  color: #1b1b1b;
 }
 
 .header > .link:hover {
-    color: #1B1B1B;
+  color: #1b1b1b;
 }
-

@@ -15,9 +15,12 @@ import {
 } from "./add";
 
 import {
-  deleteReviewById, deleteAbstractById,
-  deleteCandidateById,deleteOfferById,deleteInterviewById
-} from './delete';
+  deleteReviewById,
+  deleteAbstractById,
+  deleteCandidateById,
+  deleteOfferById,
+  deleteInterviewById
+} from "./delete";
 
 export const edit = ({ id, newModel, tableName }) => {
   switch (tableName) {
@@ -62,10 +65,10 @@ export const add = ({ tableName, newModel }) => {
 export const deleteById = ({ id, tableName }) => {
   switch (tableName) {
     case "Candidates":
-      deleteCandidateById({ candidateId: id});
+      deleteCandidateById({ candidateId: id });
       break;
     case "Abstracts":
-      deleteAbstractById({ abstractId: id});
+      deleteAbstractById({ abstractId: id });
       break;
     case "Offers":
       deleteOfferById({ offerId: id });

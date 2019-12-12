@@ -6,14 +6,13 @@ import { deleteById } from "../actions/apply";
 
 export const DeleteModal = ({ id, tableName, setModal, update }) => {
   const [newModel, setNewModel] = useState({});
-console.log(id)
+  console.log(id);
   const footer = (
     <div className="d-flex">
       <button
         className="btn btn-danger mr-4"
         onClick={() => {
-            
-          deleteById({id,tableName});
+          deleteById({ id, tableName });
           update(tableName);
           setModal({ show: false, id: 0 });
           update(tableName);
@@ -23,7 +22,7 @@ console.log(id)
       </button>
       <button
         className="btn btn-secondary"
-        onClick={() =>  setModal({ show: false, id: 0 })}
+        onClick={() => setModal({ show: false, id: 0 })}
       >
         Cancel
       </button>
@@ -39,12 +38,12 @@ console.log(id)
         setNewModel({});
       }}
     >
-    <div className="message-for-delete">
-        <p>By deleting this data, you can also delete the data associated with it. 
-       </p>
-       <div>
-        Are you sure you want to delete?
-      </div>
+      <div className="message-for-delete">
+        <p>
+          By deleting this data, you can also delete the data associated with
+          it.
+        </p>
+        <div>Are you sure you want to delete?</div>
       </div>
     </Modal>
   );

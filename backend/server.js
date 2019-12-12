@@ -5,25 +5,16 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 
+let database = "testcreate";
+
 var db = require("knex")({
   client: "pg",
   connection: {
     host: "127.0.0.1",
     user: "postgres",
     password: "12345",
-    database: "db-lab"
-  }
+    database: database  }
 });
-
-var dbTest = require("knex")({
-  client: "pg",
-  connection: {
-    host: "127.0.0.1",
-    user: "db-lab",
-    password: "12345"
-  }
-});
-
 const main = require("./controller/main");
 
 const app = express();
@@ -42,7 +33,21 @@ app.use(helmet());
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(morgan("combined"));
-app.get("/createDB", (req, res) => main.createDB(req, res, db));
+app.get("/createDB", (req, res) => {
+  main.createDB(req, res, db);
+});
+app.get("/createSchema", (req, res) => {
+  db = require("knex")({
+    client: "pg",
+    connection: {
+      host: "127.0.0.1",
+      user: "postgres",
+      password: "12345",
+      database: req.query.name
+    }
+  });
+  main.createSchema(req, res, db);
+});
 app.get("/candidates", (req, res) => main.getCandidates(req, res, db));
 app.get("/abstracts", (req, res) => main.getAbstracts(req, res, db));
 app.get("/offers", (req, res) => main.getOffers(req, res, db));

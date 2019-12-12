@@ -1,0 +1,435 @@
+-- создание таблиц
+CREATE TABLE Candidate (
+	CandidateId SERIAL PRIMARY KEY,
+	Surname varchar(255) NOT NULL,
+	Name varchar(255) NOT NULL,
+	Patronymic varchar(255),
+	Skill varchar(255),
+	Source varchar(255),
+	Status varchar(255),
+	Result varchar (255)
+);
+
+CREATE TABLE Abstract (
+	AbstractId SERIAL PRIMARY KEY,
+	Salary int,
+	English varchar(255),
+	Hours int
+);
+
+CREATE TABLE Offer (
+	OfferId SERIAL PRIMARY KEY,
+	IsProposed bit,
+	IsAdopted bit
+);
+
+CREATE TABLE Review (
+	ReviewId SERIAL PRIMARY KEY,
+	ConductedBy varchar(255),
+	Comments varchar(255)
+);
+
+CREATE TABLE Interview (
+    InterviewId SERIAL PRIMARY KEY,
+    CandidateID int NOT NULL,
+    ReviewID int NOT NULL,
+    AbstractId int NOT NULL,
+    OfferId int NOT NULL,
+    Date Date,
+    Place varchar(255),
+    DD varchar(255),
+    FOREIGN KEY (CandidateId) REFERENCES Candidate(CandidateId) ON DELETE CASCADE,
+    FOREIGN KEY (ReviewId) REFERENCES Review(ReviewId) ON DELETE CASCADE,
+    FOREIGN KEY (AbstractId) REFERENCES Abstract(AbstractId) ON DELETE CASCADE,
+    FOREIGN KEY (OfferId) REFERENCES Offer(OfferId) ON DELETE CASCADE
+);
+
+-- добавление записей
+CREATE PROCEDURE AddCandidate(_surname varchar(255), _name varchar(255),  _patronymic varchar(255), _skill varchar(255), _source varchar(255),
+ _status varchar(255), _result varchar(255))
+LANGUAGE SQL
+AS $BODY$
+    INSERT INTO Candidate(Surname, Name, Patronymic, Skill, Source, Status, Result)
+    VALUES(_surname, _name, _patronymic, _skill, _source, _status, _result);   
+$BODY$;
+
+CREATE PROCEDURE AddAbstract(_salary int, _english varchar(255), _hours int)
+LANGUAGE SQL
+AS $BODY$
+    INSERT INTO Abstract(Salary, English, Hours)
+    VALUES(_salary, _english, _hours);   
+$BODY$;
+
+CREATE PROCEDURE AddOffer(_isProposed bit, _isAdopted bit)
+LANGUAGE SQL
+AS $BODY$
+    INSERT INTO Offer(IsProposed, IsAdopted)
+    VALUES(_isProposed, _isAdopted);   
+$BODY$;
+
+CREATE PROCEDURE AddReview(_conductedBy varchar(255), _comments varchar(255))
+LANGUAGE SQL
+AS $BODY$
+    INSERT INTO Review(ConductedBy, Comments)
+    VALUES(_conductedBy, _comments);   
+$BODY$;
+
+CREATE PROCEDURE AddInterview(_candidateId int, _reviewId int, _abstractId int, _offerId int, _date Date, _place varchar(255), _dd varchar(255))
+LANGUAGE SQL
+AS $BODY$
+    INSERT INTO Interview(CandidateId, ReviewId, AbstractId, OfferId, Date, Place, DD)
+    VALUES(_candidateId, _reviewId, _abstractId, _offerId, _date, _place, _dd);   
+$BODY$;
+
+-- получение всех записей
+CREATE FUNCTION getCandidates() 
+RETURNS TABLE (
+	CandidateId int,
+	Surname varchar(255) ,
+	Name varchar(255),
+	Patronymic varchar(255),
+	Skill varchar(255),
+	Source varchar(255),
+	Status varchar(255),
+	Result varchar (255)
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM candidate;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION getAbstracts() 
+RETURNS TABLE (
+	AbstractId int,
+	Salary int,
+	English varchar(255),
+	Hours int
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM abstract;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION getOffers() 
+RETURNS TABLE (
+	OfferId int,
+	IsProposed bit,
+	IsAdopted bit
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM offer;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION getReviews() 
+RETURNS TABLE (
+	ReviewId int,
+	ConductedBy varchar(255),
+	Comments varchar(255)
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM review;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION getInterviews() 
+RETURNS TABLE (
+           InterviewId int,
+	CandidateID int ,
+	ReviewID int,
+	AbstractId int,
+	OfferId int,
+	Date Date,
+	Place varchar(255),
+	DD varchar(255)
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM interview;
+END;
+$$ LANGUAGE plpgsql;
+
+-- удаление всех записей
+CREATE PROCEDURE deleteAllCandidates()
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+	DELETE FROM candidate;
+END;
+$$;
+
+CREATE PROCEDURE deleteAllAbstracts()
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+	DELETE FROM abstract;
+END;
+$$;
+
+CREATE PROCEDURE deleteAllOffers()
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+	DELETE FROM offer;
+END;
+$$;
+
+CREATE PROCEDURE deleteAllReviews()
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+	DELETE FROM review;
+END;
+$$;
+
+CREATE PROCEDURE deleteAllInterviews()
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+	DELETE FROM interview;
+END;
+$$;
+
+CREATE PROCEDURE deleteAll()
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+	CALL deleteAllCandidates();
+	CALL deleteAllAbstracts();
+	CALL deleteAllOffers();
+	CALL deleteAllReviews();
+	CALL deleteAllInterviews();
+END;
+$$;
+
+-- обновление кортежей
+CREATE PROCEDURE setCandidate(_candidateId int, _surname varchar(255), _name varchar(255), _patronymic varchar(255),
+							 _skill varchar(255), _source varchar(255), _status varchar(255), _result varchar(255))
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    UPDATE candidate 
+    SET surname=_surname,
+		name=_name,
+		patronymic=_patronymic,
+		skill=_skill,
+		source=_source,
+		status=_status,
+		result=_result
+    WHERE candidateId = _candidateId;
+END;
+$$;
+
+CREATE PROCEDURE setAbstract(_abstractId int, _salary int, _english varchar(255), _hours int)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    UPDATE abstract 
+    SET salary = _salary,
+		english=_english,
+		hours=_hours
+    WHERE abstractId=_abstractId;
+END;
+$$;
+
+CREATE PROCEDURE setOffer(_offerId int, _isProposed bit, _isAdopted bit)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    UPDATE offer
+    SET isProposed = _isProposed,
+		isAdopted=_isAdopted
+    WHERE offerId=_offerId;
+END;
+$$;
+
+CREATE PROCEDURE setReview(_reviewId int, _conductedBy varchar(255), _comments varchar(255))
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    UPDATE review
+    SET conductedBy = _conductedBy,
+		comments=_comments
+    WHERE reviewId=_reviewId;
+END;
+$$;
+
+CREATE PROCEDURE setInterview(_interviewId int, _candidateID int, _reviewID int,
+							 _abstractId int,_offerId int,_date Date,_place varchar(255),_dd varchar(255))
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    UPDATE interview
+    SET candidateID = _candidateID,
+		reviewID=_reviewID,
+		abstractId=_abstractId,
+		offerId=_offerId,
+		date=_date,
+		place =_place,
+		dd=_dd
+    WHERE interviewId=_interviewId;
+END;
+$$;
+
+-- поиск по ключевому текстовому полю
+CREATE FUNCTION GetCandidateBySurname(_surname varchar(255)) 
+RETURNS TABLE (
+	CandidateId int,
+	Surname varchar(255) ,
+	Name varchar(255),
+	Patronymic varchar(255),
+	Skill varchar(255),
+	Source varchar(255),
+	Status varchar(255),
+	Result varchar (255)
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM Candidate WHERE Candidate.Surname LIKE _surname;  
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION GetAbstractByEnglish(_english varchar(255)) 
+RETURNS TABLE (
+	AbstractId int,
+	Salary int,
+	English varchar(255),
+	Hours int
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM Abstract WHERE Abstract.English LIKE _english;  
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION GetOfferByIsProposed(_isProposed bit) 
+RETURNS TABLE (
+	OfferId int,
+	IsProposed bit,
+	IsAdopted bit
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM Offer WHERE Offer.IsProposed = _isProposed;  
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION GetReviewByConductedBy(_conductedBy varchar(255)) 
+RETURNS TABLE (
+	ReviewId int,
+	ConductedBy varchar(255),
+	Comments varchar(255)
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM Review WHERE Review.ConductedBy LIKE _conductedBy;  
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION GetInterviewByPlace(_place varchar(255)) 
+RETURNS TABLE (
+	InterviewId int,
+	CandidateID int ,
+	ReviewID int,
+	AbstractId int,
+	OfferId int,
+	Date Date,
+	Place varchar(255),
+	DD varchar(255)
+	)
+AS $$
+BEGIN
+RETURN QUERY
+	SELECT * FROM Interview WHERE Interview.Place LIKE _place;  
+END;
+$$ LANGUAGE plpgsql;
+
+-- удаление записей по id
+CREATE PROCEDURE deleteCandidateById(_candidateId int)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    	DELETE FROM candidate
+	WHERE candidateId=_candidateId;
+END;
+$$;
+
+CREATE PROCEDURE deleteAbstractById(_abstractId int)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+   	 DELETE FROM abstract
+	WHERE abstractId=_abstractId;
+END;
+$$;
+
+CREATE PROCEDURE deleteOfferById(_offerId int)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    	DELETE FROM offer
+	WHERE offerId=_offerId;
+END;
+$$;
+
+CREATE PROCEDURE deleteReviewById(_reviewId int)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+    DELETE FROM review
+	WHERE reviewId=_reviewId;
+END;
+$$;
+
+CREATE PROCEDURE deleteInterviewById(_interviewId int)
+LANGUAGE plpgsql    
+AS $$
+BEGIN
+            DELETE FROM interview
+	WHERE interviewId=_interviewId;
+END;
+$$;
+
+-- удаление записей по ключевому текстовому полю
+CREATE PROCEDURE DeleteCandidateBySurname(_surname varchar(255))
+LANGUAGE SQL
+AS $BODY$
+    DELETE FROM Candidate WHERE Candidate.Surname LIKE _surname   
+$BODY$;
+
+CREATE PROCEDURE DeleteAbstractByEnglish(_english varchar(255))
+LANGUAGE SQL
+AS $BODY$
+    DELETE FROM Abstract WHERE Abstract.English LIKE _english   
+$BODY$;
+
+CREATE PROCEDURE DeleteOfferByIsProposed(_isProposed bit)
+LANGUAGE SQL
+AS $BODY$
+    DELETE FROM Offer WHERE Offer.IsProposed = _isProposed   
+$BODY$;
+
+CREATE PROCEDURE DeleteReviewByConsuctedBy(_conductedBy varchar(255))
+LANGUAGE SQL
+AS $BODY$
+    DELETE FROM Review WHERE Review.ConductedBy LIKE _conductedBy   
+$BODY$;
+
+CREATE PROCEDURE DeleteInterviewByPlace(_place varchar(255))
+LANGUAGE SQL
+AS $BODY$
+    DELETE FROM Interview WHERE Interview.Place LIKE _place   
+$BODY$;

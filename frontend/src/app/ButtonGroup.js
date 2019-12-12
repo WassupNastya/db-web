@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faPlus, faReply, faReplyAll, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faPlus,
+  faReply,
+  faReplyAll,
+  faSyncAlt
+} from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { Modal } from "../shared/Modal";
 import { getInputs } from "../heplers";
