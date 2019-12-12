@@ -37,6 +37,7 @@ function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showDeleteDBModal, setShowDeleteDBModal] = useState(false);
   const [typeDelete, setTypeDelete] = useState(1);
   const [label, setLabel] = useState("");
   const [newModel, setNewModel] = useState({});
@@ -191,6 +192,24 @@ function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
       </button>
     </div>
   );
+  const footerDeleteDBModal = (
+    <div className="d-flex">
+      <button
+        className="btn btn-danger mr-4"
+        onClick={() => {
+          setGoNext(false);
+        }}
+      >
+        Delete
+      </button>
+      <button
+        className="btn btn-secondary"
+        onClick={() => setShowDeleteDBModal(false)}
+      >
+        Cancel
+      </button>
+    </div>
+  );
 
   return (
     <div className="button-group">
@@ -214,11 +233,8 @@ function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
       >
         <FontAwesomeIcon icon={faTrashAlt} className="icon-delete" />
       </button>
-      <button
-        className="btn delete-db"
-        onClick={() => setGoNext(false)}
-      >
-       Delete database
+      <button className="btn delete-db" onClick={() => setShowDeleteDBModal(true)}>
+        Delete database
       </button>
       {showAddModal && (
         <Modal
@@ -303,6 +319,15 @@ function ButtonGroup({ tableName, updateTable, update, setGoNext }) {
               )}
             </div>
           </div>
+        </Modal>
+      )}
+      {showDeleteDBModal && (
+        <Modal
+          header="Delete"
+          footer={footerDeleteDBModal}
+          onCancel={() => setShowDeleteDBModal(false)}
+        >
+          Are you sure to delete database with all tables and procedures inside? 
         </Modal>
       )}
     </div>
