@@ -152,7 +152,7 @@ function ButtonGroup({ tableName, updateTable, update, setGoNext ,nameDB}) {
       <button
         className="btn btn-success mr-4"
         onClick={() => {
-          add({ tableName, newModel });
+          add({ tableName, newModel, update });
           setShowAddModal(false);
           setNewModel({});
           update(tableName);

@@ -23,20 +23,22 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         <div className="col">{x.skill ? x.skill : ""}</div>
         <div className="col">{x.source ? x.source : ""}</div>
         <div className="col">{x.status ? x.status : ""}</div>
-        <button
-          className="btn col"
-          onClick={() => setEditModal({ show: true, id: x.candidateid })}
-        >
-          <FontAwesomeIcon icon={faEdit} color="white" />
-        </button>
-        <button
-          onClick={() => {
-            setDeleteByIdModal({ show: true, id: x.candidateid });
-          }}
-          className="btn col"
-        >
-          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
-        </button>
+        <div className="d-flex actions">
+          <button
+            className="btn col"
+            onClick={() => setEditModal({ show: true, id: x.candidateid })}
+          >
+            <FontAwesomeIcon icon={faEdit} color="white" />
+          </button>
+          <button
+            onClick={() => {
+              setDeleteByIdModal({ show: true, id: x.candidateid });
+            }}
+            className="btn col"
+          >
+            <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+          </button>
+        </div>
       </React.Fragment>
     ),
     Abstracts: x => (
@@ -45,21 +47,23 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         <div className="col">{x.salary ? x.salary : ""}</div>
         <div className="col">{x.english ? x.english : ""}</div>
         <div className="col">{x.hours ? x.hours : ""}</div>
-        <button className="btn col edit-icon">
-          <FontAwesomeIcon
-            icon={faEdit}
-            color="white"
-            onClick={() => setEditModal({ show: true, id: x.abstractid })}
-          />
-        </button>
-        <button
-          onClick={() => {
-            setDeleteByIdModal({ show: true, id: x.abstractid });
-          }}
-          className="btn col"
-        >
-          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
-        </button>
+        <div className="d-flex actions">
+          <button className="btn col edit-icon">
+            <FontAwesomeIcon
+              icon={faEdit}
+              color="white"
+              onClick={() => setEditModal({ show: true, id: x.abstractid })}
+            />
+          </button>
+          <button
+            onClick={() => {
+              setDeleteByIdModal({ show: true, id: x.abstractid });
+            }}
+            className="btn col"
+          >
+            <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+          </button>
+        </div>
       </React.Fragment>
     ),
     Offers: x => (
@@ -67,7 +71,7 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         <div className="col">{x.offerid}</div>
         <div className="col">
           {x.isproposed ? (
-            x.isproposed === 1 ? (
+            x.isproposed == 1 ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
               <FontAwesomeIcon icon={faTimes} />
@@ -78,7 +82,7 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         </div>
         <div className="col">
           {x.isadopted ? (
-            x.isadopted === 1 ? (
+            x.isadopted == 1 ? (
               <FontAwesomeIcon icon={faCheck} />
             ) : (
               <FontAwesomeIcon icon={faTimes} />
@@ -87,20 +91,22 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
             ""
           )}
         </div>
-        <button
-          className="btn col"
-          onClick={() => setEditModal({ show: true, id: x.offerid })}
-        >
-          <FontAwesomeIcon icon={faEdit} color="white" />
-        </button>
-        <button
-          onClick={() => {
-            setDeleteByIdModal({ show: true, id: x.offerid });
-          }}
-          className="btn col"
-        >
-          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
-        </button>
+        <div className="d-flex actions">
+          <button
+            className="btn col"
+            onClick={() => setEditModal({ show: true, id: x.offerid })}
+          >
+            <FontAwesomeIcon icon={faEdit} color="white" />
+          </button>
+          <button
+            onClick={() => {
+              setDeleteByIdModal({ show: true, id: x.offerid });
+            }}
+            className="btn col"
+          >
+            <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+          </button>
+        </div>
       </React.Fragment>
     ),
     Reviews: x => (
@@ -108,20 +114,22 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         <div className="col">{x.reviewid}</div>
         <div className="col">{x.conductedby ? x.conductedby : ""}</div>
         <div className="col">{x.comments ? x.comments : ""}</div>
-        <button
-          className="btn col"
-          onClick={() => setEditModal({ show: true, id: x.reviewid })}
-        >
-          <FontAwesomeIcon icon={faEdit} color="white" />
-        </button>
-        <button
-          onClick={() => {
-            setDeleteByIdModal({ show: true, id: x.reviewid });
-          }}
-          className="btn col"
-        >
-          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
-        </button>
+        <div className="d-flex actions">
+          <button
+            className="btn col"
+            onClick={() => setEditModal({ show: true, id: x.reviewid })}
+          >
+            <FontAwesomeIcon icon={faEdit} color="white" />
+          </button>
+          <button
+            onClick={() => {
+              setDeleteByIdModal({ show: true, id: x.reviewid });
+            }}
+            className="btn col"
+          >
+            <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+          </button>
+        </div>
       </React.Fragment>
     ),
     Interviews: x => (
@@ -136,20 +144,22 @@ function Table({ tableName, headers, content, updateTable, update, ...props }) {
         </div>
         <div className="col">{x.place ? x.place : ""}</div>
         <div className="col">{x.dd ? x.dd : ""}</div>
-        <button
-          className="btn col"
-          onClick={() => setEditModal({ show: true, id: x.interviewid })}
-        >
-          <FontAwesomeIcon icon={faEdit} color="white" />
-        </button>
-        <button
-          onClick={() => {
-            setDeleteByIdModal({ show: true, id: x.interviewid });
-          }}
-          className="btn col"
-        >
-          <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
-        </button>
+        <div className="d-flex actions">
+          <button
+            className="btn col"
+            onClick={() => setEditModal({ show: true, id: x.interviewid })}
+          >
+            <FontAwesomeIcon icon={faEdit} color="white" />
+          </button>
+          <button
+            onClick={() => {
+              setDeleteByIdModal({ show: true, id: x.interviewid });
+            }}
+            className="btn col"
+          >
+            <FontAwesomeIcon icon={faTrash} color="white"></FontAwesomeIcon>
+          </button>
+        </div>
       </React.Fragment>
     )
   };

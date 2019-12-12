@@ -42,22 +42,22 @@ export const edit = ({ id, newModel, tableName }) => {
   }
 };
 
-export const add = ({ tableName, newModel }) => {
+export const add = ({ tableName, newModel, update }) => {
   switch (tableName) {
     case "Candidates":
-      addCandidate(newModel);
+      addCandidate({ data: newModel, update });
       break;
     case "Abstracts":
-      addAbstract(newModel);
+      addAbstract({ data: newModel, update });
       break;
     case "Offers":
-      addOffer(newModel);
+      addOffer({ data: newModel, update });
       break;
     case "Reviews":
-      addReview(newModel);
+      addReview({ data: newModel, update });
       break;
     case "Interviews":
-      addInterview(newModel);
+      addInterview({ data: newModel, update });
       break;
   }
 };
