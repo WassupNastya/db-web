@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 
-let database = "testcreate";
 
 var db = require("knex")({
   client: "pg",
@@ -13,7 +12,8 @@ var db = require("knex")({
     host: "127.0.0.1",
     user: "postgres",
     password: "12345",
-    database: database  }
+    database: "testcreate"
+  }
 });
 const main = require("./controller/main");
 

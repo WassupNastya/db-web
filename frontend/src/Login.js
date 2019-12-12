@@ -6,7 +6,30 @@ import "./Login.css";
 function Login() {
   const [model, setModel] = useState("");
   const [goNext, setGoNext] = useState(false);
-  console.log(logo);
+  const [loading, setLoading] = useState(false);
+
+  function objectToQueryString(obj) {
+    return Object.keys(obj)
+      .map(key => key + "=" + obj[key])
+      .join("&");
+  }
+  async function createDB() {
+    let url = "http://localhost:3000/createDB";
+    url += "?" + objectToQueryString({ name: model });
+    fetch(url)
+      .then(response => createSchema())
+      .catch(err => console.log(err));
+  }
+  async function createSchema() {
+    let url = "http://localhost:3000/createSchema";
+    url += "?" + objectToQueryString({ name: model });
+    fetch(url)
+      .then(response => {})
+      .catch(err => console.log(err));
+    setTimeout(() => {
+      setGoNext(true);
+    }, 3000);
+  }
   return (
     <div>
       {!goNext && (
@@ -26,8 +49,19 @@ function Login() {
             ></input>
             <button
               className="btn btn-secondary button-start"
-              onClick={() => setGoNext(true)}
+              onClick={() => {
+                createDB();
+                setLoading(true);
+              }}
             >
+              {loading && (
+                <span
+                  style={{ marginRight: "0.5rem" }}
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              )}
               Create database
             </button>
           </div>

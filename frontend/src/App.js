@@ -22,24 +22,24 @@ function App({ setGoNext }) {
       .map(key => key + "=" + obj[key])
       .join("&");
   }
-  const namedb = "testik11";
-  async function createDB(data) {
-    let url = "http://localhost:3000/createDB";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => createSchema({ name: namedb }))
-      .catch(err => console.log(err));
-  }
-  async function createSchema(data) {
-    let url = "http://localhost:3000/createSchema";
-    url += "?" + objectToQueryString(data);
-    fetch(url)
-      .then(response => response.json())
-      .catch(err => console.log(err));
-  }
-  useEffect(() => {
-    createDB({ name: namedb });
-  }, []);
+  // const namedb = "testik11";
+  // async function createDB(data) {
+  //   let url = "http://localhost:3000/createDB";
+  //   url += "?" + objectToQueryString(data);
+  //   fetch(url)
+  //     .then(response => createSchema({ name: namedb }))
+  //     .catch(err => console.log(err));
+  // }
+  // async function createSchema(data) {
+  //   let url = "http://localhost:3000/createSchema";
+  //   url += "?" + objectToQueryString(data);
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .catch(err => console.log(err));
+  // }
+  // useEffect(() => {
+  //   createDB({ name: namedb });
+  // }, []);
 
   function updateTable(content) {
     setContent(content);
