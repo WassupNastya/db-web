@@ -12,6 +12,8 @@
 
 > API можно посмотреть в файле LikeSwaggerButCooler.txt
 
+![Login](https://github.com/WassupNastya/db-web/blob/master/screens/Login.png)
+
 ![Candidates](https://github.com/WassupNastya/db-web/blob/master/screens/Candidates.png)
 
 ![Add](https://github.com/WassupNastya/db-web/blob/master/screens/Add.png)
